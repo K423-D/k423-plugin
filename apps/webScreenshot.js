@@ -39,8 +39,13 @@ export class webScreenshot extends plugin {
   async screenshot(e) {
     const url = e.msg.replace('#screenshot:', '')
     const reg = new RegExp('^(?:(http|https):\/\/)?((?:[\\w-]+\\.)+[a-z0-9]+)((?:\/[^\/?#]*)+)?(\\?[^#]+)?(#.+)?$')
+    const reg2 = new RegExp('(b23.tv)|(bili(22|23|33|2233).cn)|(.bilibili.com)|(^(av|cv)(\\d+))|(^BV([a-zA-Z0-9]{10})+)')
     if (!reg.test(url)) {
-      e.reply(['请检查带上的链接格式是否正确哦'])
+      e.reply(['请检查带上的链接格式是否正确哦~'])
+      return false
+    }
+    if (reg2.test(url)) {
+      e.reply(['B站的链接不进行处理哦~'])
       return false
     }
     const browser = await puppeteer.launch({
