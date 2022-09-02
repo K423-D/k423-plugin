@@ -37,6 +37,7 @@ export class baidubaike extends plugin {
     try {
       res = JSON.parse(res)
     } catch (error) {
+      console.log(response.text());
       res = {}
       msg = [
         '未知错误：',
