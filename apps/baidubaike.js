@@ -39,7 +39,8 @@ export class baidubaike extends plugin {
     } catch (error) {
       res = {}
       msg = [
-        error,
+        '未知错误：',
+        `${error}`,
       ]
     }
 
