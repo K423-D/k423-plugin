@@ -34,7 +34,14 @@ export class baidubaike extends plugin {
     let response = await fetch(url);
     // console.log(response.text());
     let res = await response.text();
-    res = JSON.parse(res)
+    try {
+      res = JSON.parse(res)
+    } catch (error) {
+      res = {}
+      msg = [
+        error,
+      ]
+    }
 
     if (res.code == -2) {
       e.reply("百度百科暂未收录词条“" + msg + "”");
@@ -45,7 +52,7 @@ export class baidubaike extends plugin {
       return true
     }
     if (res.code != 1) {
-      e.reply("未知错误，请联系开发者反馈");
+      e.reply(msg);
       return true
     }
     msg = [
