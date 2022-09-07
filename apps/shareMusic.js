@@ -42,12 +42,13 @@ export class shareMusic extends plugin {
     msg = msg.replace(/[非VIP|点歌|qq|QQ|kugou|酷狗|网易云|网抑云]/g, "");
     console.log("这个崽种在搜", msg);
     try {
-      msg = encodeURI(msg);
-      const params = { search: msg };
+      // msg = encodeURI(msg);
+      // const params = { search: msg };
       let apiName = isQQ ? "qq" : isKugou ? "kugou" : "wangyiyun";
       let url = urlList[apiName].replace("paramsSearch", msg);
       let response = await fetch(url);
       const { data, result } = await response.json();
+      console.log(result);
       let songList = [];
       if (isQQ)
         songList = isPay ? data.song.list.filter((item) => !item.pay.payinfo) : data.song.list;
@@ -65,12 +66,12 @@ export class shareMusic extends plugin {
           isQQ ? "qq" : isKugou ? "kugou" : "163",
           isQQ ? songList[0].songid : isKugou ? songList[0].hash : songList[0].id
         );
-        if (isWangYiyun) {
-          let response = await fetch(`https://autumnfish.cn/song/url?id=${songList[0].id}`);
-          const { data } = await response.json();
-          if (!data[0].url) return true;
-          await e.reply(segment.record(data[0].url));
-        }
+        // if (isWangYiyun) {
+        //   let response = await fetch(`https://autumnfish.cn/song/url?id=${songList[0].id}`);
+        //   const { data } = await response.json();
+        //   if (!data[0].url) return true;
+        //   await e.reply(segment.record(data[0].url));
+        // }
       }
     } catch (error) {
       console.log(error);
