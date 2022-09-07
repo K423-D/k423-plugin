@@ -48,7 +48,7 @@ export class shareMusic extends plugin {
       let url = urlList[apiName].replace("paramsSearch", msg);
       let response = await fetch(url);
       const { data, result } = await response.json();
-      console.log(result);
+      // console.log(result);
       let songList = [];
       if (isQQ)
         songList = isPay ? data.song.list.filter((item) => !item.pay.payinfo) : data.song.list;
