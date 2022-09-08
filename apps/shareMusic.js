@@ -39,15 +39,16 @@ export class shareMusic extends plugin {
     if (!isQQ && !isKugou && !isWangYiyun) isWangYiyun = true;
     let isPay = msg.includes("非VIP");
     console.log("什么！这个穷鬼点非VIP？？？");
-    msg = msg.replace(/[非VIP|点歌|qq|QQ|kugou|酷狗|网易云|网抑云]/g, "");
+    msg = msg.replace(/[点歌]/g, "");
     console.log("这个崽种在搜", msg);
     try {
       msg = encodeURI(msg);
-      const params = { search: msg };
+      // const params = { search: msg };
       let apiName = isQQ ? "qq" : isKugou ? "kugou" : "wangyiyun";
       let url = urlList[apiName].replace("paramsSearch", msg);
       let response = await fetch(url);
       const { data, result } = await response.json();
+      // console.log(result);
       let songList = [];
       if (isQQ)
         songList = isPay ? data.song.list.filter((item) => !item.pay.payinfo) : data.song.list;
