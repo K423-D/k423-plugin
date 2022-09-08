@@ -65,12 +65,12 @@ export class shareMusic extends plugin {
           isQQ ? "qq" : isKugou ? "kugou" : "163",
           isQQ ? songList[0].songid : isKugou ? songList[0].hash : songList[0].id
         );
-        if (isWangYiyun) {
-          let response = await fetch(`https://autumnfish.cn/song/url?id=${songList[0].id}`);
-          const { data } = await response.json();
-          if (!data[0].url) return true;
-          await e.reply(segment.record(data[0].url));
-        }
+        // if (isWangYiyun) {
+        //   let response = await fetch(`https://autumnfish.cn/song/url?id=${songList[0].id}`);
+        //   const { data } = await response.json();
+        //   if (!data[0].url) return true;
+        //   await e.reply(segment.record(data[0].url));
+        // }
       }
     } catch (error) {
       console.log(error);
