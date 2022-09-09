@@ -43,22 +43,14 @@ export class translate extends plugin {
       q: str,
       from: 'en',
       to: 'zh',
-      appid: 20220908001335899,
+      appid: '20220908001335899',
       salt: 18200193133,
     }
     const sign = this.genSign(data)
+    console.log(sign);
     data.q = encodeURI(data.q)
     data.sign = sign
-    // console.log(data);
-    const res = await fetch(`https://fanyi-api.baidu.com/api/trans/vip/translate`, {
-      method: 'POST', // *GET, POST, PUT, DELETE, etc.
-      headers: {
-        // 'Content-Type': 'application/json'
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: data // body data type must match "Content-Type" header
-      // body: JSON.stringify(data) // body data type must match "Content-Type" header
-    })
+    const res = await fetch(`https://fanyi-api.baidu.com/api/trans/vip/translate?q=${data.q}&from=${data.from}&to=${data.to}&appid=${data.appid}&salt=${data.salt}&sign=${data.sign}`)
     const jsn = await res.json()
     // console.log(jsn);
     if (jsn.trans_result) {
