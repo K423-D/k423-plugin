@@ -41,13 +41,13 @@ export class translate extends plugin {
     // }
     const data = {
       q: str,
-      from: 'en',
+      from: 'auto',
       to: 'zh',
       appid: '20220908001335899',
       salt: 18200193133,
     }
     const sign = this.genSign(data)
-    console.log(sign);
+    // console.log(sign);
     data.q = encodeURI(data.q)
     data.sign = sign
     const res = await fetch(`https://fanyi-api.baidu.com/api/trans/vip/translate?q=${data.q}&from=${data.from}&to=${data.to}&appid=${data.appid}&salt=${data.salt}&sign=${data.sign}`)
