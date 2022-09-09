@@ -30,11 +30,16 @@ export class baidubaike extends plugin {
     msg = msg.replace(/#|百科/g, "").trim();
     if (!msg) return;
 
-    let url = `https://ovooa.com/API/bdbk/?Msg=${msg}`;
+    let url = `http://ovooa.com/API/bdbk/?Msg=${msg}`;
     let response = await fetch(url);
     let r = await response.text();
-    console.log(r);
-    const res = JSON.parse(r)
+    let res = {}
+    try {
+      res = JSON.parse(r)
+    } catch (error) {
+      e.reply(error);
+      return true
+    }
     if (res.code == -2) {
       e.reply("百度百科暂未收录词条“" + msg + "”");
       return true
