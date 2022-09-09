@@ -55,7 +55,7 @@ export class vilg extends plugin {
     // ];
     if (result?.data?.taskId) {
       e.reply(['生成图片中...一分钟后获取结果']);
-      this.getResultImg(e, accessToken, result.data.taskId, data[0], data[1])
+      this.getResultImg(e, accessToken, result.data.taskId, data[0], data[1] ? data[1] : 1)
     } else {
       e.reply(msg);
     }
