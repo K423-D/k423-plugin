@@ -32,7 +32,7 @@ export class vilg extends plugin {
     let msg = []
     let result = {}
     const data = e.msg.replace('#vilg', '').split('|')
-    console.log(data);
+    // console.log(data);
     // 获取accessToken
     if (data.length === 0) {
       e.reply(['请检查命令格式']);
@@ -55,7 +55,7 @@ export class vilg extends plugin {
     // ];
     if (result?.data?.taskId) {
       e.reply(['生成图片中...一分钟后获取结果']);
-      this.getResultImg(e, accessToken, result.data.taskId)
+      this.getResultImg(e, accessToken, result.data.taskId, data[0], data[1])
     } else {
       e.reply(msg);
     }
@@ -77,7 +77,7 @@ export class vilg extends plugin {
   }
   // 提交请求
   async textToImg(text, style, accessToken) {
-    console.log(text, style, accessToken);
+    // console.log(text, style, accessToken);
     const styleMap = {
       1: '油画',
       2: '水彩',
@@ -99,11 +99,19 @@ export class vilg extends plugin {
       body: JSON.stringify(data)
     })
     const json = await res.json()
-    console.log(json);
+    // console.log(json);
     return json
   }
   // 获取
-  async getResultImg(e, access_token, taskId) {
+  async getResultImg(e, access_token, taskId, text, style) {
+    const styleMap = {
+      1: '油画',
+      2: '水彩',
+      3: '卡通',
+      4: '粉笔画',
+      5: '儿童画',
+      6: '蜡笔画',
+    }
     const timeout = setTimeout(async () => {
       const data = {
         access_token,
@@ -118,12 +126,12 @@ export class vilg extends plugin {
         body: JSON.stringify(data)
       })
       const json = await res.json()
-      console.log(json);
+      // console.log(json);
       if (json.msg === 'success') {
         // e.reply([JSON.stringify(json.data.imgUrls)])
-        e.reply([segment.image(json.data.img)])
+        e.reply([`文本：${text}\n`, `风格：${styleMap[style]}\n`, segment.image(json.data.img)])
       } else {
-        e.reply([`图片获取失败\n${json.msg}`])
+        e.reply([`文本：${text}\n`, `风格：${styleMap[style]}\n`, `图片获取失败\n${json.msg}`])
       }
       clearTimeout(timeout)
     }, 60 * 1000);
