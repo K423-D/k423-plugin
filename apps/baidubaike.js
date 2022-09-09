@@ -33,6 +33,7 @@ export class baidubaike extends plugin {
     let url = `https://ovooa.com/API/bdbk/?Msg=${msg}`;
     let response = await fetch(url);
     let r = await response.text();
+    console.log(r);
     const res = JSON.parse(r)
     if (res.code == -2) {
       e.reply("百度百科暂未收录词条“" + msg + "”");
