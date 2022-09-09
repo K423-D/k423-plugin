@@ -22,7 +22,7 @@ export class translate extends plugin {
     })
   }
   genSign(data) {
-    const secret = 'KqV0xX7FA0m1ZJhGrHJO'
+    const secret = 'G9bqL2z3PPt7qnirR6nd'
     const s = `${data.appid}${data.q}${data.salt}${secret}`
     // console.log(s);
     return MD5(s)
@@ -46,10 +46,10 @@ export class translate extends plugin {
       appid: 20220908001335899,
       salt: 18200193133,
     }
-    data.q = encodeURI(data.q)
     const sign = this.genSign(data)
+    data.q = encodeURI(data.q)
     data.sign = sign
-    console.log(data);
+    // console.log(data);
     const res = await fetch(`https://fanyi-api.baidu.com/api/trans/vip/translate`, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       headers: {
@@ -60,11 +60,11 @@ export class translate extends plugin {
       // body: JSON.stringify(data) // body data type must match "Content-Type" header
     })
     const jsn = await res.json()
-    console.log(jsn);
+    // console.log(jsn);
     if (jsn.trans_result) {
       e.reply(`翻译结果：${jsn.trans_result[0].dst}`)
     } else {
-      e.reply(JSON.stringify(jsn))
+      e.reply(`错误码：${jsn.error_code}\n错误信息：${jsn.error_msg}`)
     }
     return true
   }
