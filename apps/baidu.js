@@ -95,7 +95,6 @@ export class baidu extends plugin {
       title = title[0].replace(/"title":"/g, "");
       titleUrl = titleUrl[0].replace(/"titleUrl":"/g, "");
     }
-
     title = title.replace(/<em>|<\/em>/g, "").trim();
     contentText = contentText.replace(/<em>|<\/em>/g, "").trim();
     // if (token) {

@@ -33,6 +33,7 @@ export class baidubaike extends plugin {
     let url = `http://ovooa.com/API/bdbk/?Msg=${msg}`;
     let response = await fetch(url);
     let r = await response.text();
+    r.replace('json:', '')
     let res = {}
     try {
       res = JSON.parse(r)
