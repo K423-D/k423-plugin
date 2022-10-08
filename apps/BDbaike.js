@@ -1,6 +1,6 @@
 import { segment } from "oicq";
 import fetch from "node-fetch";
-import plugin from '../../lib/plugins/plugin.js'
+import plugin from '../../../lib/plugins/plugin.js'
 
 // 使用方法：
 // #百科XX
