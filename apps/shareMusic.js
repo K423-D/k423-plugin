@@ -1,12 +1,10 @@
 import fetch from "node-fetch";
-import { segment } from "oicq";
 
 export class shareMusic extends plugin {
   constructor() {
     super({
       name: '点歌',
       dsc: '点歌',
-      /** https://oicqjs.github.io/oicq/#events */
       event: 'message',
       priority: 1000,
       rule: [

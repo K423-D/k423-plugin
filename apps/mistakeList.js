@@ -1,4 +1,3 @@
-import { segment } from "oicq";
 import plugin from '../../../lib/plugins/plugin.js'
 
 
@@ -7,7 +6,6 @@ export class mistakeList extends plugin {
     super({
       name: '谬误列表',
       dsc: '谬误列表',
-      /** https://oicqjs.github.io/oicq/#events */
       event: 'message',
       priority: 1000,
       rule: [

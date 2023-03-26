@@ -1,5 +1,4 @@
 import plugin from '../../../lib/plugins/plugin.js'
-import { segment } from 'oicq'
 import fetch from 'node-fetch';
 // import request from 'superagent';
 
@@ -8,7 +7,6 @@ export class vilg extends plugin {
     super({
       name: 'vilg',
       dsc: 'vilg',
-      /** https://oicqjs.github.io/oicq/#events */
       event: 'message',
       priority: 1000,
       rule: [

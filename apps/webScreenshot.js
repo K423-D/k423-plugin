@@ -3,7 +3,6 @@
  * https://gitee.com/Acceleratorsky/suiyue
  */
 import plugin from '../../../lib/plugins/plugin.js'
-import { segment } from 'oicq'
 
 import { createRequire } from 'module'
 const require = createRequire(import.meta.url)
@@ -16,7 +15,6 @@ export class webScreenshot extends plugin {
       name: '截图预览网页内容',
       /** 功能描述 */
       dsc: '群里发送网页地址，截图预览网页内容',
-      /** https://oicqjs.github.io/oicq/#events */
       event: 'message',
       /** 优先级，数字越小等级越高 */
       priority: 1000,
@@ -34,7 +32,6 @@ export class webScreenshot extends plugin {
 
   /**
    * 
-   * @param e oicq传递的事件参数e
    */
   async screenshot(e) {
     const url = e.msg.replace('#screenshot:', '')

@@ -1,6 +1,5 @@
 
 import { createRequire } from 'module'
-import { segment } from "oicq";
 import plugin from '../../../lib/plugins/plugin.js'
 
 //v2.2由一葉修改，后续修改者请标号注释
@@ -19,7 +18,6 @@ export class pixivsoutu extends plugin {
       name: 'saucenao.com 搜图',
       /** 功能描述 */
       dsc: '【搜图】带上图',
-      /** https://oicqjs.github.io/oicq/#events */
       event: 'message',
       /** 优先级，数字越小等级越高 */
       priority: 10,

@@ -1,5 +1,4 @@
 import plugin from '../../../lib/plugins/plugin.js'
-import { segment } from 'oicq'
 import fetch from 'node-fetch';
 
 export class baidubaike extends plugin {
@@ -7,7 +6,6 @@ export class baidubaike extends plugin {
     super({
       name: 'baidubaike',
       dsc: '百度百科',
-      /** https://oicqjs.github.io/oicq/#events */
       event: 'message',
       priority: 1000,
       rule: [

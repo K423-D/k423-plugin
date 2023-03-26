@@ -1,7 +1,6 @@
 // 编写者：（▼へ▼メ）
 // 做了点微小的改动
 import plugin from '../../../lib/plugins/plugin.js'
-import { segment } from 'oicq'
 import fetch from 'node-fetch';
 
 export class cqyl extends plugin {
@@ -9,7 +8,6 @@ export class cqyl extends plugin {
     super({
       name: '超强语录',
       dsc: '超强语录',
-      /** https://oicqjs.github.io/oicq/#events */
       event: 'message',
       priority: 1000,
       rule: [

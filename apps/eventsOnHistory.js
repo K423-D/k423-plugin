@@ -8,7 +8,6 @@ export class eventsOnHistory extends plugin {
     super({
       name: '历史上的今天',
       dsc: '历史上的今天',
-      /** https://oicqjs.github.io/oicq/#events */
       event: 'message',
       priority: 1000,
       rule: [
