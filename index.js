@@ -1,6 +1,10 @@
 import fs from 'node:fs'
 import common from '../../lib/common/common.js'
 
+if (!global.segment) {
+  global.segment = (await import("oicq")).segment
+}
+
 const files = fs.readdirSync('./plugins/k423-plugin/apps').filter(file => file.endsWith('.js'))
 
 let list = []

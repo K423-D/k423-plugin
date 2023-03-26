@@ -1,5 +1,4 @@
 import plugin from '../../../lib/plugins/plugin.js'
-import { segment } from 'oicq'
 import lodash from 'lodash'
 
 
@@ -10,7 +9,6 @@ export class fakerMsg extends plugin {
       name: '制作转发信息',
       /** 功能描述 */
       dsc: '制作转发信息',
-      /** https://oicqjs.github.io/oicq/#events */
       event: 'message',
       /** 优先级，数字越小等级越高 */
       priority: 1000,
@@ -28,7 +26,6 @@ export class fakerMsg extends plugin {
 
   /**
    * 
-   * @param e oicq传递的事件参数e
    */
   async fakeMsg(e) {
     // console.log(e.message);

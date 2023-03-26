@@ -1,6 +1,5 @@
 import plugin from '../../../lib/plugins/plugin.js'
 import cfg from '../../../lib/config/config.js'
-import { segment } from 'oicq';
 import fetch from "node-fetch";
 
 
@@ -16,7 +15,6 @@ export class baidu extends plugin {
       name: 'baidu',
       /** 功能描述 */
       dsc: '百度搜索',
-      /** https://oicqjs.github.io/oicq/#events */
       event: 'message',
       /** 优先级，数字越小等级越高 */
       priority: 1000,

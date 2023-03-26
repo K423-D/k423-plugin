@@ -8,7 +8,6 @@ export class translate extends plugin {
     super({
       name: '百度翻译',
       dsc: '百度翻译',
-      /** https://oicqjs.github.io/oicq/#events */
       event: 'message',
       priority: 1000,
       rule: [
